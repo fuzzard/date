@@ -74,8 +74,14 @@ target_sources( date INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/date/julian.h>
 )
 if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.15)
+    set(DATE_INCLUDE_FILES "include/date/date.h"
+                           "include/date/solar_hijri.h"
+                           "include/date/islamic.h"
+                           "include/date/iso_week.h"
+                           "include/date/julian.h")
     # public headers will get installed:
-    set_target_properties( date PROPERTIES PUBLIC_HEADER include/date/date.h )
+    set_target_properties( date PROPERTIES PUBLIC_HEADER "${DATE_INCLUDE_FILES}" )
+
 endif ()
 
 # These used to be set with generator expressions,
